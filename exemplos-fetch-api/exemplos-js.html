@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <style>
+        .item {
+            color: blue;
+        }
+        .destaque {
+            border: 3px solid green;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnAcao">Aperte aqui</button>
+    <hr />
+    
+    <button id="btnJSON">JSON parse</button>
+    <button id="btnJSONStr">JSON stringify</button>
+
+
+
+    <!-- beforebegin -->
+    <div id="conteudo">
+        <!-- afterbegin -->
+
+        <!-- beforeend -->
+    </div>
+    <!-- afterend -->
+
+
+    <script>
+        function executar() {
+            let c = document.getElementById('conteudo');
+
+            // c.innerHTML = '<h1>Exemplo</h1><p>Texto de exemplo</p>';
+
+            // let h1El = document.querySelector('h1');
+            // h1El.style.color = 'red';
+
+            // let pEl = document.querySelector('p');
+            // pEl.classList.add('item');
+            // pEl.classList.toggle('destaque');
+
+            for (let i = 1; i <= 1000; i++) {
+                // let itemHtml = '<h1>Item ' + i + '</h1><p>bla bla bla</p><hr />';
+                let itemHtml = `<h1>Item ${i}</h1>
+                    <p>bla bla bla</p>
+                    <hr />`;
+                c.insertAdjacentHTML('afterbegin', itemHtml);
+            }
+        }
+
+        function lerJson() {
+            let objJs = JSON.parse('{ "nome": "Fulano", "idade": 20 }');
+            alert('Nome: ' + objJs.nome);
+        }
+
+        function gerarJson() {
+            let objJs = {
+                nome: 'Ciclano',
+                idade: 25
+            };
+            alert(JSON.stringify(objJs));
+        }
+
+        let btn = document.getElementById('btnAcao');
+        // btn.onclick = executar;
+        // OU
+        btn.addEventListener('click', executar);
+
+        document.getElementById('btnJSON').onclick = lerJson;
+        document.getElementById('btnJSONStr').onclick = gerarJson;
+
+
+
+    </script>
+</body>
+</html>

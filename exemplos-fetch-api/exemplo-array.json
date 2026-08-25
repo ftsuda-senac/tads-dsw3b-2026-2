@@ -1,0 +1,17 @@
+[
+    {
+        "nome": "Título JSON 1",
+        "valor": 12356,
+        "propriedades": ["p1", "p2"]
+    },
+    {
+        "nome": "Título JSON 2",
+        "valor": 789,
+        "propriedades": ["xyz123", "x0"]
+    },
+    {
+        "nome": "Título JSON 3",
+        "valor": 100,
+        "propriedades": ["batman", "superman"]
+    }
+]

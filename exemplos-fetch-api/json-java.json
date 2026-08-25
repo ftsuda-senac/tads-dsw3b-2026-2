@@ -1,0 +1,9 @@
+ {
+    "nome": "JSON Java",
+    "valor": 411,
+    "propriedades": [
+        "prop1",
+        "prop2",
+        "prop3"
+    ]
+}

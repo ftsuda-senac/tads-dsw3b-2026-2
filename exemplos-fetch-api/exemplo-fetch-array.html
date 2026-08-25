@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Fetch API</title>
+</head>
+<body>
+    <h1>Exemplo Fetch API - Array</h1>
+    <p>OBS: RODAR COM EXTENSÃO LIVE SERVER DO VS CODE PARA FUNCIONAR</p>
+    <button id="btnExecutar">Executar Fetch</button>
+    <div id="resultados"></div>
+    <script>
+        async function carregarDados() {
+
+            try {
+                const httpResp = await fetch('exemplo-array.json');
+                if (!httpResp.ok) {
+                    alert('Erro na requisição do Fetch API');
+                    return;
+                }
+                const dadosArray = await httpResp.json();
+
+                // Limpar o div#resultados
+                document.getElementById('resultados').innerHTML = '';
+
+                for (let j = 0; j < dadosArray.length; j++) {
+
+                    const dados = dadosArray[j];
+
+                    let nome = dados.nome;
+                    let valor = dados.valor;
+
+                    let itens = '';
+                    for (let i = 0; i < dados.propriedades.length; i++) {
+                        let itemLi = '<li>' + dados.propriedades[i] + '</li>';
+                        itens = itens + itemLi;
+                    }
+
+                    // Adicionar trecho HTML antes da /div
+                    document.getElementById('resultados').insertAdjacentHTML('beforeend', `
+                        <h2>${nome}</h2>
+                        <p>Valor: ${valor}</p>
+                        <div>Propriedades:
+                            <ul>
+                                ${itens}
+                            </ul>
+                        </div>
+                    `);
+                }
+
+
+
+            } catch(err) {
+                alert('Erro no processamento do Fetch API - ' + err)
+            }
+
+        }
+        document.getElementById('btnExecutar')
+            .addEventListener('click', carregarDados);
+
+    </script>
+</body>
+</html>
